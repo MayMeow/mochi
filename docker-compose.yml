@@ -1,0 +1,10 @@
+version: '2.3'
+
+services:
+  web:
+    build: ./Mochi.Web
+    image: mochi-web
+    container_name: mochi_web
+    restart: always
+    ports:
+      - '8081:8080'
