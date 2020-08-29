@@ -3,7 +3,8 @@ FROM mcr.microsoft.com/dotnet/core/sdk:$VERSION AS build-env
 WORKDIR /app
 ADD . .
 RUN dotnet publish \
-  # --runtime alpine-x64 \
+  --runtime alpine-x64 \
+  # Multiproject selfcontained app not supported
   # --self-contained true \
   # /p:PublishTrimmed=true \
   # /p:PublishSingleFile=true \
@@ -11,6 +12,7 @@ RUN dotnet publish \
   -o ./output
 
 FROM mcr.microsoft.com/dotnet/core/runtime:$VERSION
+# Vlen using alpine image
 # RUN apk add --no-cache libstdc++ libintl
 RUN adduser \
   --disabled-password \
