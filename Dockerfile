@@ -6,7 +6,7 @@ RUN dotnet publish Mochi.Web \
   --runtime alpine-x64 \
   --self-contained true \
   # /p:PublishTrimmed=true \
-  # /p:PublishSingleFile=true \
+  /p:PublishSingleFile=true \
   -c Release \
   -o ./output
 
