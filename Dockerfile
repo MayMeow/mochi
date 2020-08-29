@@ -2,7 +2,7 @@ ARG VERSION=3.1-alpine
 FROM mcr.microsoft.com/dotnet/core/sdk:$VERSION AS build-env
 WORKDIR /app
 ADD . .
-RUN dotnet publish Mochi.Web \
+RUN dotnet publish \
   --runtime alpine-x64 \
   --self-contained true \
   # /p:PublishTrimmed=true \
