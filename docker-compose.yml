@@ -1,13 +1,20 @@
 version: '2.3'
 
+networks:
+  frontend:
+    external: true
+  mochi_backend:
+    internal: true
+
 services:
   web:
     build: .
     image: mochi-web
     container_name: mochi_web
     restart: always
-    # ports:
-    #   - '8081:8080'
+    networks:
+      - frontend
+      - mochi_backend
     labels:
       - "traefik.enable=true"
       - "traefik.http.services.mochi.loadbalancer.server.port=8080"
