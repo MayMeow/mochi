@@ -3,15 +3,15 @@ FROM mcr.microsoft.com/dotnet/core/sdk:$VERSION AS build-env
 WORKDIR /app
 ADD . .
 RUN dotnet publish \
-  --runtime alpine-x64 \
-  --self-contained true \
+  # --runtime alpine-x64 \
+  # --self-contained true \
   # /p:PublishTrimmed=true \
-  /p:PublishSingleFile=true \
+  # /p:PublishSingleFile=true \
   -c Release \
   -o ./output
 
-FROM alpine:3.12
-RUN apk add --no-cache libstdc++ libintl
+FROM mcr.microsoft.com/dotnet/core/runtime:$VERSION
+# RUN apk add --no-cache libstdc++ libintl
 RUN adduser \
   --disabled-password \
   --home /app \
