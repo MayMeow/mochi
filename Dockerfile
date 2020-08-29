@@ -6,7 +6,7 @@ RUN dotnet publish \
   --runtime alpine-x64 \
   #Multiproject selfcontained app not supported
   --self-contained true \
-  /p:PublishTrimmed=true \
+  # /p:PublishTrimmed=true \
   /p:PublishSingleFile=true \
   -c Release \
   -o ./output
