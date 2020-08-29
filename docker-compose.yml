@@ -2,7 +2,7 @@ version: '2.3'
 
 services:
   web:
-    build: ./Mochi.Web
+    build: .
     image: mochi-web
     container_name: mochi_web
     restart: always
