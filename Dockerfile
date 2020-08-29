@@ -4,16 +4,16 @@ WORKDIR /app
 ADD . .
 RUN dotnet publish \
   --runtime alpine-x64 \
-  # Multiproject selfcontained app not supported
-  # --self-contained true \
-  # /p:PublishTrimmed=true \
-  # /p:PublishSingleFile=true \
+  #Multiproject selfcontained app not supported
+  --self-contained true \
+  /p:PublishTrimmed=true \
+  /p:PublishSingleFile=true \
   -c Release \
   -o ./output
 
-FROM mcr.microsoft.com/dotnet/core/runtime:$VERSION
+FROM alpine:3.12
 # Vlen using alpine image
-# RUN apk add --no-cache libstdc++ libintl
+RUN apk add --no-cache libstdc++ libintl
 RUN adduser \
   --disabled-password \
   --home /app \
